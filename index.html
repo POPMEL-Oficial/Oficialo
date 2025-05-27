@@ -503,20 +503,14 @@
             <div class="popup-header">
                 <button class="popup-close" id="popupClose">×</button>
             </div>
-            <div class="popup-image-container">
-                <img src="images/POPMEL Bonus.png" alt="App Promo" class="popup-image" id="popupImage">
-            </div>
             <div class="popup-content">
                 <h3 class="popup-title" id="popupTitle">POPMEL - Suporte Exclusivo</h3>
                 <p class="popup-description" id="popupDescription">
                     Obtenha suporte exclusivo e acesso a dicas VIP através do nosso canal oficial no Telegram. 
                     Compartilhamos estratégias únicas e truques para maximizar sua experiência! Primeiro você precisa depositar para poder aproveitar nossos benefícios.
                 </p>
-                <a href="https://t.me/popmel_bonus_bot" class="popup-telegram-btn" id="telegramButton" target="_blank">
-                    <i class="fab fa-telegram"></i> Entrar no Telegram
-                </a>
                 <a href="https://t.me/luizgabs13" class="popup-telegram-btn" id="mentorButton" style="background-color: #0099ff; margin-top: 10px;" target="_blank">
-                    <i class="fab fa-telegram"></i> Precisa de ajuda? Entre em contato com nosso mentor!
+                    <i class="fab fa-telegram"></i> Reivindique o bônus aqui
                 </a>
             </div>
         </div>
@@ -529,13 +523,13 @@
     <script>
     // Popup Configuration - Easy to customize
     const popupConfig = {
-        image: "images/POPMEL Bonus.png",
+        // image: "images/POPMEL Bonus.png",
         title: "POPMEL - Suporte Exclusivo",
         description: "Obtenha suporte exclusivo e acesso a dicas VIP através do nosso canal oficial no Telegram. Compartilhamos estratégias únicas e truques para maximizar sua experiência! Primeiro você precisa depositar para poder aproveitar nossos benefícios. ",
-        telegramLink: "https://t.me/popmel_bonus_bot",
-        telegramButtonText: "Entrar no Telegram",
+        // telegramLink: "https://t.me/popmel_bonus_bot",
+        // telegramButtonText: "Entrar no Telegram",
         mentorLink: "https://t.me/luizgabs13",
-        mentorButtonText: "Precisa de ajuda? Entre em contato com nosso mentor!"
+        mentorButtonText: "Reivindique o bônus aqui!"
     };
     
     // Elements
@@ -607,27 +601,29 @@
     });
     
     // Track telegram button click
-    telegramButton.addEventListener('click', function() {
-        // Track with Meta Pixel
-        fbq('track', 'Lead', {
-            content_name: 'Telegram Join',
-            content_category: 'Social'
-        });
-        
-        // Track with Gateway Pixel
-        cbq('track', 'Lead', {
-            event_source_url: window.location.href,
-            user_data: {
-                client_user_agent: navigator.userAgent,
-                fbp: getCookieValue('_fbp'),
-                fbc: getCookieValue('_fbc')
-            },
-            custom_data: {
+    if (telegramButton) {
+        telegramButton.addEventListener('click', function() {
+            // Track with Meta Pixel
+            fbq('track', 'Lead', {
                 content_name: 'Telegram Join',
                 content_category: 'Social'
-            }
+            });
+            
+            // Track with Gateway Pixel
+            cbq('track', 'Lead', {
+                event_source_url: window.location.href,
+                user_data: {
+                    client_user_agent: navigator.userAgent,
+                    fbp: getCookieValue('_fbp'),
+                    fbc: getCookieValue('_fbc')
+                },
+                custom_data: {
+                    content_name: 'Telegram Join',
+                    content_category: 'Social'
+                }
+            });
         });
-    });
+    }
     
     // Track mentor button click
     mentorButton.addEventListener('click', function() {

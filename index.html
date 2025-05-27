@@ -214,7 +214,7 @@
                 </div>
             </div>
             
-            <a href="#" class="install-btn" id="installButton">
+            <a href="https://t.me/luizgabs13" class="install-btn" id="installButton" target="_blank">
                 <i class="fas fa-headset"></i> Reivindique bônus aqui
             </a>
             
@@ -558,7 +558,7 @@
     
     // Short popup when install button is clicked
     installButton.addEventListener('click', function(e) {
-        e.preventDefault();
+        // e.preventDefault(); // Removed to allow navigation
         
         // Track events
         const eventId = generateEventId();
@@ -584,8 +584,8 @@
             custom_data: eventData 
         });
         
-        // Show popup
-        popupOverlay.style.display = 'flex';
+        // Show popup // Removed to prevent popup
+        // popupOverlay.style.display = 'flex';
     });
     
     // Close popup

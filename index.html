@@ -17,7 +17,7 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '24192442997008925');
+    fbq('init', '1088792906720778');
     fbq('track', 'PageView');
     
     // Helper functions for tracking
@@ -31,7 +31,7 @@
     }
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=24192442997008925&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1088792906720778&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
     
@@ -602,27 +602,27 @@
     
     // Track telegram button click
     if (telegramButton) {
-        telegramButton.addEventListener('click', function() {
-            // Track with Meta Pixel
-            fbq('track', 'Lead', {
+    telegramButton.addEventListener('click', function() {
+        // Track with Meta Pixel
+        fbq('track', 'Lead', {
+            content_name: 'Telegram Join',
+            content_category: 'Social'
+        });
+        
+        // Track with Gateway Pixel
+        cbq('track', 'Lead', {
+            event_source_url: window.location.href,
+            user_data: {
+                client_user_agent: navigator.userAgent,
+                fbp: getCookieValue('_fbp'),
+                fbc: getCookieValue('_fbc')
+            },
+            custom_data: {
                 content_name: 'Telegram Join',
                 content_category: 'Social'
-            });
-            
-            // Track with Gateway Pixel
-            cbq('track', 'Lead', {
-                event_source_url: window.location.href,
-                user_data: {
-                    client_user_agent: navigator.userAgent,
-                    fbp: getCookieValue('_fbp'),
-                    fbc: getCookieValue('_fbc')
-                },
-                custom_data: {
-                    content_name: 'Telegram Join',
-                    content_category: 'Social'
-                }
-            });
+            }
         });
+    });
     }
     
     // Track mentor button click
